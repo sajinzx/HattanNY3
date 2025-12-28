@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, current
           <div className="flex items-center gap-4">
              <div className="text-right hidden md:block">
                 <p className="text-xs text-gray-500 uppercase font-semibold">Admin Panel</p>
-                <p className="text-sm font-medium text-gray-900">Elite Events Management</p>
+                <p className="text-sm font-medium text-gray-900">VB associates</p>
              </div>
              <div className="w-8 h-8 rounded-full bg-gray-200 border-2 border-white overflow-hidden shadow-sm">
                 <img src="https://picsum.photos/32/32" alt="Avatar" />

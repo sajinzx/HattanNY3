@@ -2,13 +2,15 @@
 import { GoogleGenAI } from "@google/genai";
 import { Booking } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+// Initialize with direct process.env.API_KEY as per guidelines
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const getSmartInsights = async (bookings: Booking[]) => {
   if (bookings.length === 0) return "Add some bookings to generate AI insights.";
 
+  // Fixed: Changed b.ticketType to b.tickets to match Booking interface
   const dataSummary = bookings.map(b => ({
-    type: b.ticketType,
+    tickets: b.tickets,
     paid: b.amountPaid,
     pending: b.amountPending,
     total: b.totalCost
@@ -32,6 +34,7 @@ export const getSmartInsights = async (bookings: Booking[]) => {
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });
+    // .text is a property, not a method
     return response.text;
   } catch (error) {
     console.error("Gemini Error:", error);

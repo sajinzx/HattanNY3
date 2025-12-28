@@ -9,8 +9,10 @@ export interface Booking {
   id: string;
   name: string;
   phone: string;
-  ticketType: TicketType;
-  quantity: number;
+  tickets: {
+    [key in TicketType]?: number;
+  };
+  totalPax: number;
   amountPaid: number;
   totalCost: number;
   amountPending: number;
